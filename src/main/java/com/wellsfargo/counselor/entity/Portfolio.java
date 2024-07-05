@@ -14,6 +14,9 @@ public class Portfolio {
     @GeneratedValue
     private long portfolioId;
 
+    @ManyToOne
+    private Client client;
+
     @Column(nullable = false)
     private LocalDate creationDate;
 
@@ -21,8 +24,17 @@ public class Portfolio {
 
     }
 
-    public Portfolio(LocalDate creationDate) {
+    public Portfolio(Clilent client, LocalDate creationDate) {
+        this.client = client;
         this.creationDate = creationDate;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public LocalDate getCreationDate() {
